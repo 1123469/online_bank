@@ -52,7 +52,23 @@ public class LoginMenu {
     }
 
     private void showDetailMenu() {
+        System.out.println("1. 所有明细");
+        System.out.println("2. 条件查询");
+        System.out.println("3. 返回主菜单");
+        int i = scanner.nextInt();
+        switch (i){
+            case 1:
 
+                break;
+            case 2:
+                userAction.getDetails();
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("输入有误！");
+                break;
+        }
     }
 
     private void exit() {

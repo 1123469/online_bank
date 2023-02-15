@@ -7,7 +7,9 @@ import com.woniu.bank.dao.CardDao;
 import com.woniu.bank.dao.DetailDao;
 import com.woniu.bank.dao.UserDao;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import static com.woniu.bank.util.MyUtil.*;
@@ -54,7 +56,7 @@ public class UserService {
         cardDao.update(card);
         Detail detail = new Detail();
         detail.setAmount(amount);
-        detail.setDatetime(LocalDateTime.now());
+        detail.setDealtime(Timestamp.valueOf(LocalDateTime.now()));
         detail.setMyCard(card.getId());
         detail.setIncome(Detail.INCOME);
         ;detailDao.save(detail);
@@ -67,7 +69,7 @@ public class UserService {
         cardDao.update(card);
         Detail detail = new Detail();
         detail.setIncome(Detail.OUTCOME);
-        detail.setDatetime(LocalDateTime.now());
+        detail.setDealtime(Timestamp.valueOf(LocalDateTime.now()));
         detail.setAmount(amount);
         detail.setMyCard(card.getId());
         detailDao.save(detail);
@@ -82,7 +84,7 @@ public class UserService {
         // 个人明细
         Detail myDetail = new Detail();
         myDetail.setAmount(amount);
-        myDetail.setDatetime(LocalDateTime.now());
+        myDetail.setDealtime(Timestamp.valueOf(LocalDateTime.now()));
         myDetail.setMyCard(card.getId());
         myDetail.setIncome(Detail.OUTCOME);
         myDetail.setOtherCard(otherCard.getId());
@@ -90,13 +92,19 @@ public class UserService {
         // 对方明细
         Detail otherDetail = new Detail();
         otherDetail.setAmount(amount);
-        otherDetail.setDatetime(LocalDateTime.now());
+        otherDetail.setDealtime(Timestamp.valueOf(LocalDateTime.now()));
         otherDetail.setMyCard(otherCard.getId());
         otherDetail.setIncome(Detail.INCOME);
         myDetail.setOtherCard(card.getId());
         detailDao.save(otherDetail);
-
-
-
     }
+
+    public List<Detail> getDetails(int userId,int myCard, int otherCard, int income, String amount, int days) {
+        return detailDao.getDetails(userId,myCard,otherCard,income,amount,days);
+    }
+
+    /*
+    * 条件查询
+    * */
+
 }

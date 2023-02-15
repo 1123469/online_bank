@@ -1,5 +1,6 @@
 package com.woniu.bank.bean;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ public class Detail {
     private  Integer otherCard;
     private int income;
     private double amount;
-    private LocalDateTime datetime;
+    private Timestamp dealtime;
 
     public static final int INCOME = 1;
     public static final int OUTCOME = 0;
@@ -54,12 +55,13 @@ public class Detail {
         this.amount = amount;
     }
 
-    public LocalDateTime getDatetime() {
-        return datetime;
+
+    public Timestamp getDealtime() {
+        return dealtime;
     }
 
-    public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
+    public void setDealtime(Timestamp dealtime) {
+        this.dealtime = dealtime;
     }
 
     @Override
@@ -70,7 +72,7 @@ public class Detail {
                 ", otherCard=" + otherCard +
                 ", income=" + income +
                 ", amount=" + amount +
-                ", datetime=" + datetime +
+                ", dealtime=" + dealtime +
                 '}';
     }
 }

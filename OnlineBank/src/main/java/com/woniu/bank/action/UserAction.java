@@ -1,8 +1,11 @@
 package com.woniu.bank.action;
 import com.woniu.bank.bean.Card;
+import com.woniu.bank.bean.Detail;
 import com.woniu.bank.bean.User;
 import com.woniu.bank.service.CardService;
 import com.woniu.bank.service.UserService;
+
+import java.util.List;
 
 import static com.woniu.bank.util.MyUtil.*;
 public class UserAction {
@@ -127,11 +130,27 @@ public class UserAction {
 
             userservice.transfer(card,otherCard,amount);
             System.out.println("转账成功！");
-
-
         }
+    }
 
-
+    public void getDetails(){
+        System.out.println("要查询的账号（所有账号输入0）");
+        int myCard = scanner.nextInt();
+        System.out.println("要查询的账号（所有账号输入0,如果要查询存取款记录输入-1）");
+        int otherCard = scanner.nextInt();
+        System.out.println("支出(0)/收入(1)/所有(2)");
+        int income = scanner.nextInt();
+        System.out.println("请输入交易金额区间(10-100):");
+        String amount =scanner.next();
+        System.out.println("查过去多少天的明细？");
+        int days = scanner.nextInt();
+        List<Detail> details = userservice.getDetails(loginUser.getId(),myCard,otherCard,income,amount,days);
+        for (Detail detail : details) {
+            System.out.println("我的卡号\t对方卡号\t收支\t交易金额\t交易时间");
+            System.out.println(detail.getMyCard()+"\t"+
+                    detail.getOtherCard()+"\t"+detail.getIncome()+"\t"+detail.getAmount()+"\t"+detail.getDealtime()
+                    );
+        }
 
     }
 }
