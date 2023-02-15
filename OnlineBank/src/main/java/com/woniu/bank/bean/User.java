@@ -1,4 +1,7 @@
 package com.woniu.bank.bean;
+
+import java.util.List;
+
 /*
 * 用户类
 * */
@@ -8,6 +11,7 @@ public class User {
     private String idcard;
     private String tel;
     private String pwd;
+    private List<Card> cards;
 
     public User(String name, String idcard, String tel, String pwd) {
         this.name = name;
@@ -19,6 +23,10 @@ public class User {
     public User() {
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -27,9 +35,13 @@ public class User {
                 ", idcard='" + idcard + '\'' +
                 ", tel='" + tel + '\'' +
                 ", pwd='" + pwd + '\'' +
+                ", cards=" + cards +
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -60,5 +72,13 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
     }
 }

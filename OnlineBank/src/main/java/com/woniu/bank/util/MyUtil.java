@@ -7,6 +7,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MyUtil {
@@ -32,5 +33,9 @@ public class MyUtil {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getRandomPwd(){
+        return new Random().nextInt(999999)+"";
     }
 }

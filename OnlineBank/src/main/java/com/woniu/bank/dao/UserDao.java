@@ -15,10 +15,21 @@ public class UserDao {
         try {
             Long bigId = queryRunner.insert(conn,sql,new ScalarHandler<Long>(),user.getName(),user.getIdcard(),user.getTel(),user.getPwd());
             int id = bigId.intValue();
-            System.out.println(id);
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return 0;
+    }
+
+    public User getByTelAndPwd(String tel, String pwd) {
+        String sql = "select id,name,idcard,tel,pwd from users where tel=? and pwd =?";
+        Connection conn = getConnection();
+        User user = null;
+        try {
+            user = queryRunner.query(conn,sql,new BeanHandler<>(User.class),tel,pwd);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 }

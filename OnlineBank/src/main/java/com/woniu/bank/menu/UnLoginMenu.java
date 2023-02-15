@@ -19,6 +19,7 @@ public class UnLoginMenu {
                 useraction.regist();
                 break;
             case 2:
+                useraction.login();
                 break;
             case 3:
                 break;
@@ -27,6 +28,5 @@ public class UnLoginMenu {
             default:
                 System.out.println("输入有误");
         }
-
     }
 }

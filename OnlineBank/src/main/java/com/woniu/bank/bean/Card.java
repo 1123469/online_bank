@@ -2,8 +2,17 @@ package com.woniu.bank.bean;
 
 public class Card {
     private int id;
-    private String pwd;
+    private String cpwd;
     private double balance;
+    private  String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public int getId() {
         return id;
@@ -13,12 +22,21 @@ public class Card {
         this.id = id;
     }
 
-    public String getPwd() {
-        return pwd;
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", cpwd='" + cpwd + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public String getCpwd() {
+        return cpwd;
+    }
+
+    public void setCpwd(String cpwd) {
+        this.cpwd = cpwd;
     }
 
     public double getBalance() {
@@ -29,12 +47,5 @@ public class Card {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", pwd='" + pwd + '\'' +
-                ", balance=" + balance +
-                '}';
-    }
+
 }
